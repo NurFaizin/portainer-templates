@@ -1,0 +1,95 @@
+{
+    "version": "2",
+    "templates": [
+        {
+            "type": 2,
+            "title": "n8n",
+            "description": "n8n cluster",
+            "note": "Deploys n8n cluster with PostgreSQL and queue worker mechanism.",
+            "categories": [
+                "workflow",
+                "pipeline"
+            ],
+            "platform": "linux",
+            "logo": "https://d33wubrfki0l68.cloudfront.net/b8db213a4d85ebec7b82272cacb727a05a9a1475/96e9f/_images/n8n-docs-icon.svg",
+            "repository": {
+                "url": "https://github.com/NurFaizin/portainer-templates",
+                "stackfile": "stacks/n8n/docker-stack.yml"
+            },
+            "env": [
+                {
+                    "name": "IMAGE_TAG",
+                    "label": "Image version tag",
+                    "default": "0.215.1"
+                },
+                {
+                    "name": "POSTGRES_DB",
+                    "label": "Database name",
+                    "default": "n8n"
+                },
+                {
+                    "name": "POSTGRES_USER",
+                    "label": "Database user"
+                },
+                {
+                    "name": "POSTGRES_PASSWORD",
+                    "label": "Database password"
+                },
+                {
+                    "name": "PROXY_ENABLE",
+                    "label": "Enable reverse proxy",
+                    "select": [
+                        {
+                            "text": "Yes",
+                            "value": "true",
+                            "default": true
+                        },
+                        {
+                            "text": "No",
+                            "value": "false"
+                        }
+                    ]
+                },
+                {
+                    "name": "PROXY_DOMAIN",
+                    "label": "Reverse proxy domain"
+                },
+                {
+                    "name": "LIMIT_CPU",
+                    "label": "Resource Limit CPU",
+                    "default": "0.5"
+                },
+                {
+                    "name": "LIMIT_MEMORY",
+                    "label": "Resource Limit Memory",
+                    "default": "512MB"
+                },
+                {
+                    "name": "AUTOSCALE_ENABLE",
+                    "label": "Enable autoscaling",
+                    "select": [
+                        {
+                            "text": "Yes",
+                            "value": "true",
+                            "default": true
+                        },
+                        {
+                            "text": "No",
+                            "value": "false"
+                        }
+                    ]
+                },
+                {
+                    "name": "AUTOSCALE_REPLICAS_MIN",
+                    "label": "Minimum replica number",
+                    "default": "1"
+                },
+                {
+                    "name": "AUTOSCALE_REPLICAS_MAX",
+                    "label": "Maximum replica number",
+                    "default": "5"
+                }
+            ]
+        }
+    ]
+}
