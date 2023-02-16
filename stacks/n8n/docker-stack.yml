@@ -63,14 +63,14 @@ services:
         - traefik.enable=${PROXY_ENABLE}
         - traefik.docker.network=traefik-public
         - traefik.constraint-label=traefik-public
-        - traefik.http.routers.${COMPOSE_PROJECT_NAME}-http.rule=Host(`${PROXY_DOMAIN}`)
-        - traefik.http.routers.${COMPOSE_PROJECT_NAME}-http.entrypoints=http
-        - traefik.http.routers.${COMPOSE_PROJECT_NAME}-http.middlewares=https-redirect
-        - traefik.http.routers.${COMPOSE_PROJECT_NAME}-https.rule=Host(`${PROXY_DOMAIN}`)
-        - traefik.http.routers.${COMPOSE_PROJECT_NAME}-https.entrypoints=https
-        - traefik.http.routers.${COMPOSE_PROJECT_NAME}-https.tls=true
-        - traefik.http.routers.${COMPOSE_PROJECT_NAME}-https.tls.certresolver=le
-        - traefik.http.services.${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=5678
+        - traefik.http.routers.{{.Service.Name}}-http.rule=Host(`${PROXY_DOMAIN}`)
+        - traefik.http.routers.{{.Service.Name}}-http.entrypoints=http
+        - traefik.http.routers.{{.Service.Name}}-http.middlewares=https-redirect
+        - traefik.http.routers.{{.Service.Name}}-https.rule=Host(`${PROXY_DOMAIN}`)
+        - traefik.http.routers.{{.Service.Name}}-https.entrypoints=https
+        - traefik.http.routers.{{.Service.Name}}-https.tls=true
+        - traefik.http.routers.{{.Service.Name}}-https.tls.certresolver=le
+        - traefik.http.services.{{.Service.Name}}.loadbalancer.server.port=5678
 
   n8n-worker:
     <<: *shared
