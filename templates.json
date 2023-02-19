@@ -51,6 +51,11 @@
                     ]
                 },
                 {
+                    "name": "PROXY_NAME",
+                    "label": "Reverse proxy name (Should be unique)",
+                    "description": "Tips: you can fill with the project name."
+                },
+                {
                     "name": "PROXY_DOMAIN",
                     "label": "Reverse proxy domain"
                 },
